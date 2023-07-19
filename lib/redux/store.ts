@@ -11,26 +11,15 @@ import {
   type TypedUseSelectorHook,
 } from 'react-redux'
 
-/* Instruments */
-import { reducer } from './rootReducer'
-import { middleware } from './middleware'
+import { imgurSlice } from './slices'
 
-const configureStoreDefaultOptions: ConfigureStoreOptions = { reducer }
-
-export const makeReduxStore = (
-  options: ConfigureStoreOptions = configureStoreDefaultOptions
-) => {
-  const store = configureStore(options)
-
-  return store
-}
 
 export const reduxStore = configureStore({
-  reducer,
-  middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(middleware)
-  },
+  reducer: {
+    imgur: imgurSlice.reducer
+  }
 })
+
 export const useDispatch = () => useReduxDispatch<ReduxDispatch>()
 export const useSelector: TypedUseSelectorHook<ReduxState> = useReduxSelector
 
