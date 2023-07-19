@@ -9,7 +9,6 @@ import {
 import styles from './Feed.module.css'
 import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
-import Image from 'next/image'
 
 type LazyLoadMediaProps = {
   title: string
@@ -61,7 +60,7 @@ export function LazyLoadCardMedia({
         inView && type.includes('video') ? (
           <video src={src} autoPlay muted loop onCanPlay={handleLoad} />
         ) : (
-          <img src={src} onLoad={handleLoad} alt={title} width={300} />
+          <img src={src} onLoad={handleLoad} alt={title} />
         )
         // : <></>
       }

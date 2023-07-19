@@ -63,9 +63,10 @@ export const Gallery = () => {
             {isAlbum &&
               selected.images &&
               selected.images.map((image, index) => {
+                const isVideo = image.type.includes('video')
                 return (
                   <div className={styles.galleryMedia} key={index}>
-                    {image.type === 'video/mp4' ? (
+                    {isVideo ? (
                       <video src={image.link} muted loop autoPlay controls />
                     ) : (
                       <img
@@ -80,7 +81,7 @@ export const Gallery = () => {
               })}
             {!isAlbum && (
               <div className={styles.galleryMedia}>
-                {selected.type === 'video/mp4' ? (
+                {selected.type?.includes('video') ? (
                   <video src={selected.link} muted loop autoPlay controls />
                 ) : (
                   <img
