@@ -8,7 +8,6 @@ import { LazyLoadCardMedia } from './LazyLoadCardMedia'
 export const Feed = () => {
   const images = useSelector(selectImages)
   const cards = images.feedGalleries.map((gallery, index) => {
-    console.log('gallery', gallery)
     return (
       <a key={index} href={`/${gallery.id}?isAlbum=${gallery.isAlbum}`}>
         <div key={gallery.id} className={styles.card}>

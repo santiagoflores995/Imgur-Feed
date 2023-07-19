@@ -43,11 +43,7 @@ export function LazyLoadCardMedia({
   if (isLast && inView && !loading) {
     dispatch(fetchMoreImagesAsync())
   }
-
-  type === 'video/mp4'
-    ? console.log('video', title, src)
-    : console.log('image', title, src)
-
+  
   return (
     <div
       ref={ref}
