@@ -6,6 +6,10 @@ I wanted to implement something similar to what the grid in imgur.com looks like
 
 I needed to install some extra libraries, mainly react-masonry-css to achieve the masonry layout on the Home page and react-intersection-observer to interact more easily with the Intersection Observer API in order to have lazy loading of both images and videos, as well as to implement 'infinite scrolling' on the feed.
 
+## Live Demo
+
+[Live Demo here](https://with-redux-app-two.vercel.app/)
+
 ## How to use
 
 ```bash
