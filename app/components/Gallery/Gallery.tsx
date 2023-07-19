@@ -1,38 +1,43 @@
 'use client'
 
-import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { usePathname, useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
 import {
   useSelector,
   useDispatch,
   selectImages,
   fetchGalleryAsync,
 } from '@/lib/redux'
-import styles from './Gallery.module.css';
-import { MdArrowBack, MdArrowUpward, MdArrowDownward, MdScoreboard } from 'react-icons/md';
+import styles from './Gallery.module.css'
+import {
+  MdArrowBack,
+  MdArrowUpward,
+  MdArrowDownward,
+  MdScoreboard,
+} from 'react-icons/md'
 
 export const Gallery = () => {
   const [_, id] = usePathname().split('/')
   const searchParams = useSearchParams()
-  const isAlbum = searchParams.get('isAlbum') !== "false"
-  
+  const isAlbum = searchParams.get('isAlbum') !== 'false'
+
   const dispatch = useDispatch()
-  const {selected} = useSelector(selectImages)
-  
+  const { selected } = useSelector(selectImages)
+
   useEffect(() => {
     dispatch(fetchGalleryAsync(id, isAlbum))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, isAlbum])
 
   return (
     <>
-      {
-        selected &&
+      {selected && (
         <div className={styles.page}>
           <div className={styles.header}>
             <div className={styles.backSection}>
-            <a href="/">
-              <MdArrowBack />
-            </a>
+              <a href="/">
+                <MdArrowBack />
+              </a>
             </div>
             <div className={styles.titleSection}>
               <div className={styles.topSection}>
@@ -55,32 +60,41 @@ export const Gallery = () => {
             </div>
           </div>
           <div className={styles.galleryContent}>
-            {
-              isAlbum && selected.images && selected.images.map((image, index) => {
-                return <div className={styles.galleryMedia} key={index}>
-                      {
-                        image.type === "video/mp4"
-                        ? <video src={image.link} muted loop autoPlay controls/>
-                        : <img src={image.link} loading="lazy" />
-                      }
+            {isAlbum &&
+              selected.images &&
+              selected.images.map((image, index) => {
+                return (
+                  <div className={styles.galleryMedia} key={index}>
+                    {image.type === 'video/mp4' ? (
+                      <video src={image.link} muted loop autoPlay controls />
+                    ) : (
+                      <img
+                        src={image.link}
+                        loading="lazy"
+                        alt={image.description || ''}
+                      />
+                    )}
                     <p>{image.description}</p>
                   </div>
-              })
-            }
-            {
-              !isAlbum && 
+                )
+              })}
+            {!isAlbum && (
               <div className={styles.galleryMedia}>
-                {
-                  selected.type === "video/mp4"
-                  ? <video src={selected.link} muted loop autoPlay controls/>
-                  : <img src={selected.link} loading="lazy" />
-                }
+                {selected.type === 'video/mp4' ? (
+                  <video src={selected.link} muted loop autoPlay controls />
+                ) : (
+                  <img
+                    src={selected.link}
+                    loading="lazy"
+                    alt={selected.description || ''}
+                  />
+                )}
                 <p>{selected.description}</p>
               </div>
-            }
+            )}
           </div>
         </div>
-      }
+      )}
     </>
   )
 }

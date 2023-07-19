@@ -4,9 +4,9 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 const initialState: ImgurSliceState = {
   feedGalleries: [],
   selected: null,
-  section: "top",
-  sort: "top",
-  window: "day",
+  section: 'top',
+  sort: 'top',
+  window: 'day',
   page: 1,
   showViral: true,
   loading: false,
@@ -39,7 +39,7 @@ export const imgurSlice = createSlice({
         ...state,
         feedGalleries: [],
         page: 1,
-        section: action.payload
+        section: action.payload,
       }
     },
     setWindow: (state, action: PayloadAction<string>) => {
@@ -47,7 +47,7 @@ export const imgurSlice = createSlice({
         ...state,
         feedGalleries: [],
         page: 1,
-        window: action.payload
+        window: action.payload,
       }
     },
     setSort: (state, action: PayloadAction<string>) => {
@@ -55,7 +55,7 @@ export const imgurSlice = createSlice({
         ...state,
         feedGalleries: [],
         page: 1,
-        sort: action.payload
+        sort: action.payload,
       }
     },
     setShowViral: (state, action: PayloadAction<boolean>) => {
@@ -63,21 +63,21 @@ export const imgurSlice = createSlice({
         ...state,
         feedGalleries: [],
         page: 1,
-        showViral: action.payload
+        showViral: action.payload,
       }
     },
     setPage: (state, action: PayloadAction<number>) => {
       return {
         ...state,
-        page: action.payload
+        page: action.payload,
       }
     },
   },
 })
 
 export type ImgurSliceState = {
-  feedGalleries: FeedGallery[];
-  selected: ImgurGallery | null 
+  feedGalleries: FeedGallery[]
+  selected: ImgurGallery | null
   section: string
   sort: string
   page: number
@@ -87,14 +87,14 @@ export type ImgurSliceState = {
 }
 
 export type FeedGallery = {
-  id: string,
-  title: string,
-  isAlbum: boolean,
-  redirectLink: string,
+  id: string
+  title: string
+  isAlbum: boolean
+  redirectLink: string
   cover: {
-    link: string,
-    height: number,
-    width: number,
+    link: string
+    height: number
+    width: number
     type: string
   }
 }

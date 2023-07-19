@@ -1,11 +1,10 @@
 'use client'
 
 import Masonry from 'react-masonry-css'
-import styles from './Feed.module.css';
-
+import styles from './Feed.module.css'
 
 type CardGridProps = {
-  cards: JSX.Element[];
+  cards: JSX.Element[]
 }
 
 export const CardGrid: React.FC<CardGridProps> = ({ cards }) => {
@@ -14,7 +13,7 @@ export const CardGrid: React.FC<CardGridProps> = ({ cards }) => {
     1400: 3,
     1100: 2,
     700: 1,
-  };
+  }
 
   return (
     <div className={styles.feed}>
@@ -28,5 +27,5 @@ export const CardGrid: React.FC<CardGridProps> = ({ cards }) => {
         ))}
       </Masonry>
     </div>
-  );
-};
+  )
+}

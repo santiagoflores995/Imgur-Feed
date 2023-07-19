@@ -13,11 +13,10 @@ import {
 
 import { imgurSlice } from './slices'
 
-
 export const reduxStore = configureStore({
   reducer: {
-    imgur: imgurSlice.reducer
-  }
+    imgur: imgurSlice.reducer,
+  },
 })
 
 export const useDispatch = () => useReduxDispatch<ReduxDispatch>()
